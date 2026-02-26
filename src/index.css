@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-paper text-ink transition-colors duration-300 font-sans;
+  }
+
+  .dark body {
+    @apply bg-paper-dark text-ink-dark;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-title font-normal;
+  }
+
+  /* 极简的滚动条样式，适配深浅模式 */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink/20 rounded-full;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-ink-dark/20;
+  }
+
+  *::selection {
+    @apply bg-primary/30 text-ink;
+  }
+
+  .dark *::selection {
+    @apply bg-primary/30 text-ink-dark;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 10px rgba(197, 151, 62, 0.5);
+  }
+
+  .border-ink-fade {
+    border-color: rgba(44, 44, 44, 0.1);
+  }
+
+  .dark .border-ink-fade {
+    border-color: rgba(232, 224, 208, 0.1);
+  }
+}
