@@ -88,7 +88,7 @@ const TIMELINE_DATA: TimelinePhase[] = [
 
 const Timeline = () => {
     return (
-        <section id="timeline" className="relative py-24 px-4 sm:px-8 max-w-4xl mx-auto">
+        <section id="timeline" className="relative py-24 px-4 sm:px-8 max-w-6xl mx-auto">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -104,57 +104,60 @@ const Timeline = () => {
                 <div className="w-16 h-px bg-primary mx-auto mt-6 opacity-50" />
             </motion.div>
 
-            <div className="relative">
-                <div className="absolute left-[38px] md:left-[50%] top-0 bottom-0 w-1 bg-ink-fade md:-translate-x-[2px] z-0 pointer-events-none" />
+            <div className="relative mt-12">
+                <div className="absolute left-[38px] md:left-[50%] top-0 bottom-0 w-1 bg-ink-fade/50 md:-translate-x-[2px] z-0 pointer-events-none" />
 
                 {TIMELINE_DATA.map((phase, phaseIdx) => (
-                    <div key={phase.title} className="relative mb-8">
-                        {/* Phase Title Node */}
+                    <div key={phase.title} className="relative mb-16">
+                        {/* Phase Title Area - now integrated into the flow rather than a sticky circle */}
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true, margin: "-100px" }}
-                            className="sticky top-24 z-20 flex justify-center mb-8"
+                            className="relative flex justify-center mb-12 z-20"
                         >
-                            <div className="bg-paper dark:bg-paper-dark border-2 border-current px-6 py-2 rounded-full font-title text-xl shadow-lg" style={{ color: `var(--${phase.color.split('-')[1]})` }}>
+                            <div className="bg-paper border-y-2 border-ink-fade/30 dark:bg-paper-dark px-10 py-3 font-title text-2xl tracking-widest relative" style={{ color: `var(--${phase.color.split('-')[1]})` }}>
+                                <div className="absolute top-0 bottom-0 left-0 w-2 bg-current" />
+                                <div className="absolute top-0 bottom-0 right-0 w-2 bg-current" />
                                 {phase.title}
                             </div>
                         </motion.div>
 
-                        {phase.nodes.map((node, i) => (
-                            <motion.div
-                                key={node.event}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.5, delay: i * 0.1 }}
-                                className={cn(
-                                    "relative flex items-center justify-start md:justify-center mb-12 group",
-                                    i % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
-                                )}
-                            >
-                                {/* Node Dot */}
-                                <div className={cn(
-                                    "absolute left-[40px] md:left-[50%] -translate-x-1/2 rounded-full bg-paper border-[4px] z-10 transition-all duration-300",
-                                    node.important ? "border-primary w-6 h-6 shadow-[0_0_8px_rgba(197,151,62,0.6)]" : "w-5 h-5 border-ink-fade/80 group-hover:border-primary group-hover:shadow-[0_0_10px_rgba(197,151,62,0.8)]"
-                                )} />
-
-                                <div className="w-full pl-24 md:pl-0 md:w-[45%]">
+                        <div className="space-y-12">
+                            {phase.nodes.map((node, i) => (
+                                <motion.div
+                                    key={node.event}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                                    className={cn(
+                                        "relative flex items-center justify-start md:justify-center group",
+                                        i % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
+                                    )}
+                                >
+                                    {/* Node Dot - simplified and solid */}
                                     <div className={cn(
-                                        "p-5 rounded-lg border backdrop-blur-sm transition-all shadow-sm hover:shadow-md",
-                                        node.important ? "bg-primary/5 dark:bg-primary/10 border-primary/30" : "bg-paper/30 dark:bg-paper-dark/30 border-ink-fade hover:border-primary/20",
-                                        i % 2 === 0 ? "md:text-right" : "md:text-left"
-                                    )}>
-                                        <div className={cn("text-xs font-bold mb-2 flex items-center gap-2", i % 2 === 0 ? "md:justify-end" : "md:justify-start", phase.color)}>
-                                            {node.important && <Star className="w-3 h-3 fill-current animate-pulse" />}
-                                            <span>{node.age} • 境界: {node.realm}</span>
+                                        "absolute left-[40px] md:left-[50%] -translate-x-1/2 rounded bg-paper border-2 z-10 transition-all duration-300 rotate-45",
+                                        node.important ? "border-primary w-5 h-5 shadow-[0_0_8px_rgba(197,151,62,0.6)]" : "w-3 h-3 border-ink-fade/80 group-hover:border-primary group-hover:scale-150"
+                                    )} />
+
+                                    <div className="w-full pl-24 md:pl-0 md:w-[45%]">
+                                        <div className={cn(
+                                            "p-6 md:p-8 rounded-xl bg-paper/30 dark:bg-paper-dark/30 backdrop-blur-md border border-ink-fade/50 transition-all duration-300 shadow-sm hover:shadow-lg hover:border-current/30 hover:bg-paper/50 dark:hover:bg-paper-dark/50",
+                                            i % 2 === 0 ? "md:text-right" : "md:text-left"
+                                        )} style={{ color: `var(--${phase.color.split('-')[1]})` }}>
+                                            <div className={cn("text-xs font-bold mb-3 flex items-center gap-2 text-ink-muted/80 dark:text-ink-dark/60", i % 2 === 0 ? "md:justify-end" : "md:justify-start")}>
+                                                {node.important && <Star className="w-4 h-4 fill-primary text-primary animate-pulse" />}
+                                                <span><span className="text-current">{node.age}</span> • 境界: {node.realm}</span>
+                                            </div>
+                                            <h4 className="text-2xl font-title text-ink dark:text-ink-dark mb-3 leading-tight">{node.event}</h4>
+                                            <p className="text-base font-sans text-ink-muted dark:text-ink-dark/80 leading-relaxed">{node.desc}</p>
                                         </div>
-                                        <h4 className="text-xl font-title text-ink dark:text-ink-dark mb-2">{node.event}</h4>
-                                        <p className="text-sm font-sans text-ink-muted dark:text-ink-dark/70 leading-relaxed">{node.desc}</p>
                                     </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
                 ))}
             </div>

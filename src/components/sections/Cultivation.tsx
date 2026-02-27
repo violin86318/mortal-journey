@@ -99,8 +99,16 @@ const Cultivation = () => {
 
     return (
         <section id="cultivation" className="relative py-24 px-4 sm:px-8 bg-wood/5 dark:bg-black/20 overflow-hidden">
-            {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-[50rem] h-[50rem] bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent pointer-events-none" />
+            {/* Background decoration with Mountain silhouettes */}
+            <div className="absolute bottom-0 left-0 right-0 h-full pointer-events-none opacity-20 dark:opacity-10 z-0">
+                <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="absolute bottom-0 w-full h-1/2 fill-current text-ink-muted">
+                    <path d="M0,256L48,229.3C96,203,192,149,288,154.7C384,160,480,224,576,218.7C672,213,768,139,864,122.7C960,107,1056,149,1152,154.7C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
+                <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className="absolute bottom-0 w-full h-3/4 fill-current text-ink-fade/50">
+                    <path d="M0,128L60,144C120,160,240,192,360,186.7C480,181,600,139,720,128C840,117,960,139,1080,154.7C1200,171,1320,181,1380,186.7L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+                </svg>
+            </div>
+            <div className="absolute top-0 right-0 w-[50rem] h-[50rem] bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent pointer-events-none z-0" />
 
             <div className="max-w-7xl mx-auto relative z-10">
                 <motion.div
@@ -153,9 +161,9 @@ const Cultivation = () => {
                         >
                             <div className="text-center mb-8 font-title text-2xl text-ink-muted flex flex-col items-center">
                                 <span>凡人登天阶梯</span>
-                                <span className="text-sm mt-2 opacity-60">从上至下为修仙境界之升华</span>
+                                <span className="text-sm mt-2 opacity-60">由下界之凡，一步步攀升至飞升真仙</span>
                             </div>
-                            <RealmLadder realms={MORTAL_REALMS} reversed={true} />
+                            <RealmLadder realms={MORTAL_REALMS} reversed={false} />
                         </motion.div>
                     ) : (
                         <motion.div
@@ -167,9 +175,9 @@ const Cultivation = () => {
                         >
                             <div className="text-center mb-8 font-title text-2xl text-tribulation/80 flex flex-col items-center">
                                 <span>仙界成祖之路</span>
-                                <span className="text-sm mt-2 opacity-60 text-ink-muted">大道争锋，法则为尊</span>
+                                <span className="text-sm mt-2 opacity-60 text-ink-muted">大道争锋，法则为尊，登顶巅峰道祖</span>
                             </div>
-                            <RealmLadder realms={IMMORTAL_REALMS} reversed={true} />
+                            <RealmLadder realms={IMMORTAL_REALMS} reversed={false} />
                         </motion.div>
                     )}
                 </AnimatePresence>
