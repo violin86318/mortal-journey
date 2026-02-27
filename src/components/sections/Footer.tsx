@@ -51,12 +51,24 @@ const Footer = () => {
                             <MonitorPlay className="w-8 h-8 text-primary" />
                             <h3 className="text-2xl font-title">影视与动画改编</h3>
                         </div>
-                        <p className="text-sm text-ink-dark/70 leading-relaxed mb-4">
-                            《凡人修仙传》作为网文超级大IP，其衍生动画由原力动画与B站联合出品。采用真人动捕与精良的3D渲染技术，成为了国漫中的巅峰之作之一。尤其是在“乱星海”篇章和打斗戏份上，动画凭借丝滑的斗法动作和精美的特效，赢得了极高口碑。
-                        </p>
-                        <div className="flex gap-4">
-                            <span className="text-xs border border-ink-dark/30 px-3 py-1 rounded-full"><span className="text-primary mr-1">◆</span> B站百亿播放</span>
-                            <span className="text-xs border border-ink-dark/30 px-3 py-1 rounded-full"><span className="text-sword mr-1">◆</span> 顶尖动捕技术</span>
+                        <div className="space-y-4 text-sm text-ink-dark/70 leading-relaxed mb-6">
+                            <p>
+                                《凡人修仙传》动画版由<strong>原力动画（Original Force）</strong>与<strong>万维猫动画</strong>联合制作，并在哔哩哔哩（Bilibili）独家播出。该作被誉为近年来最成功的国漫改编之一。
+                            </p>
+                            <p>
+                                动画采用了顶级的真人动作捕捉技术（动捕），使得战斗场面无比丝滑流畅，完美还原了修仙界斗法时的“行云流水”与法术对抗的震撼感。剧中大量的微表情和写实的动作设计，也极大增强了凡人流“真实修魔”的代入感。
+                            </p>
+                            <div className="pl-4 border-l-2 border-primary/50 text-ink-dark/80 space-y-2 mt-4">
+                                <p><span className="text-primary font-bold">第一季《风起天南》</span>：忠实复现了七玄门风云与血色试炼的残酷，初露锋芒。</p>
+                                <p><span className="text-sword font-bold">特别篇《燕家堡之战》</span>：魔道入侵前夕，王牌斗剑场面封神。</p>
+                                <p><span className="text-spirit font-bold">第二季《魔道争锋》</span>：天南大乱，韩立在战火中摸爬滚打，最终被迫远走他乡。</p>
+                                <p><span className="text-tribulation font-bold">第三季《星海飞驰》</span>：动画进入了最精彩的乱星海篇章，海域修仙、杀妖取丹，特效与口碑再创巅峰。</p>
+                            </div>
+                        </div>
+                        <div className="flex flex-wrap gap-4 mt-6">
+                            <span className="text-xs border border-ink-dark/30 px-3 py-1 rounded-full bg-ink-dark/5"><span className="text-primary mr-1">◆</span> B站百亿播放达成</span>
+                            <span className="text-xs border border-ink-dark/30 px-3 py-1 rounded-full bg-ink-dark/5"><span className="text-sword mr-1">◆</span> 顶尖动捕技术</span>
+                            <span className="text-xs border border-ink-dark/30 px-3 py-1 rounded-full bg-ink-dark/5"><span className="text-blood mr-1">◆</span> 真人影视化筹备中</span>
                         </div>
                     </div>
 
